@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.g3force</groupId>
   <artifactId>String2ValueConverter</artifactId>
-  <version>1.0</version>
+  <version>v1.2</version>
   <name>String2ValueConverter</name>
 
   <properties>
