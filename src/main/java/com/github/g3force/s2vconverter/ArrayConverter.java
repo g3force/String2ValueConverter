@@ -80,7 +80,7 @@ public class ArrayConverter implements IString2ValueConverter
 				sb.append(';');
 			}
 			first = false;
-			sb.append(toString(impl.getComponentType(), v));
+			sb.append(parent.toString(impl.getComponentType(), v));
 		}
 		return sb.toString();
 	}
