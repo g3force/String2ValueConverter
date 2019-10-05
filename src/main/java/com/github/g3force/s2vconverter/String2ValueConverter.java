@@ -8,7 +8,8 @@
  */
 package com.github.g3force.s2vconverter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,9 @@ import java.util.ServiceLoader;
  * Convert values of certain important classes from string to value and vice
  * versa.
  * Override this class to add support for your own classes.
- *
- * @author Nicolai Ommer <nicolai.ommer@gmail.com>
  */
 public class String2ValueConverter implements IString2ValueConverter {
-    private static final Logger log = Logger.getLogger(String2ValueConverter.class.getName());
+    private static final Logger log = LogManager.getLogger(String2ValueConverter.class.getName());
 
     private final List<IString2ValueConverter> converters = new ArrayList<>();
 

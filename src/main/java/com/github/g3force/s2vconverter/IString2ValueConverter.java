@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface IString2ValueConverter {
     /**
-     * @param clazz the implemenating class
+     * @param clazz the implementing class
      * @return true, if the class can be handled by this converter
      */
     boolean supportedClass(Class<?> clazz);

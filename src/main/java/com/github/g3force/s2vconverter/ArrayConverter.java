@@ -8,17 +8,17 @@
  */
 package com.github.g3force.s2vconverter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Array;
 
 
 /**
- * @author Nicolai Ommer <nicolai.ommer@gmail.com>
+ * Convert arrays.
  */
 public class ArrayConverter implements IString2ValueConverter {
-    @SuppressWarnings("unused")
-    private static final Logger log = Logger.getLogger(ArrayConverter.class.getName());
+    private static final Logger log = LogManager.getLogger(ArrayConverter.class.getName());
 
     private final IString2ValueConverter parent;
 
