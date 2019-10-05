@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.g3force</groupId>
   <artifactId>String2ValueConverter</artifactId>
-  <version>v2.0</version>
+  <version>2.0</version>
   <name>String2ValueConverter</name>
 
   <properties>
@@ -12,9 +12,9 @@
   <dependencies>
 
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.12.1</version>
     </dependency>
 
     <dependency>
@@ -32,7 +32,7 @@
     </dependency>
 
   </dependencies>
-  
+
   <build>
     <plugins>
       <plugin>
