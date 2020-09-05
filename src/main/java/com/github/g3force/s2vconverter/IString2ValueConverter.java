@@ -12,7 +12,7 @@ import java.util.List;
 
 
 /**
- * @author Nicolai Ommer <nicolai.ommer@gmail.com>
+ * Interface for string to value converters.
  */
 public interface IString2ValueConverter {
     /**
