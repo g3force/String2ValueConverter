@@ -17,7 +17,8 @@ import java.lang.reflect.Array;
 /**
  * Convert arrays.
  */
-public class ArrayConverter implements IString2ValueConverter {
+public class ArrayConverter implements IString2ValueConverter
+{
     private static final Logger log = LogManager.getLogger(ArrayConverter.class.getName());
 
     private final IString2ValueConverter parent;
@@ -26,40 +27,45 @@ public class ArrayConverter implements IString2ValueConverter {
     /**
      * Default no-arg constructor for service loader
      */
-    public ArrayConverter() {
+    public ArrayConverter()
+    {
         parent = String2ValueConverter.getDefault();
     }
+
 
     /**
      * @param parent the parent converter for converting array values
      */
-    public ArrayConverter(final IString2ValueConverter parent) {
+    public ArrayConverter(final IString2ValueConverter parent)
+    {
         this.parent = parent;
     }
 
 
     @Override
-    public boolean supportedClass(final Class<?> clazz) {
+    public boolean supportedClass(final Class<?> clazz)
+    {
         return clazz.isArray();
     }
 
 
     @Override
-    public Object parseString(final Class<?> impl, final String value) {
+    public Object parseString(final Class<?> impl, final String value)
+    {
         String[] split = value.split(";");
         Object[] arr;
-        try {
+        try
+        {
             arr = (Object[]) Array.newInstance(impl.getComponentType(),
-                    split.length);
+                split.length);
 
-        } catch (ClassCastException err) {
-            log.error(
-                    "Could not create array of type "
-                            + impl.getComponentType(),
-                    err);
+        } catch (ClassCastException err)
+        {
+            log.error("Could not create array of type {}", impl.getComponentType(), err);
             return new Object[0];
         }
-        for (int i = 0; i < split.length; i++) {
+        for (int i = 0; i < split.length; i++)
+        {
             arr[i] = parent.parseString(impl.getComponentType(), split[i]);
         }
         return arr;
@@ -67,12 +73,15 @@ public class ArrayConverter implements IString2ValueConverter {
 
 
     @Override
-    public String toString(final Class<?> impl, final Object value) {
+    public String toString(final Class<?> impl, final Object value)
+    {
         Object[] arr = convertPrimitiveArrays(value);
         StringBuilder sb = new StringBuilder();
         boolean first = true;
-        for (Object v : arr) {
-            if (!first) {
+        for (Object v : arr)
+        {
+            if (!first)
+            {
                 sb.append(';');
             }
             first = false;
@@ -82,44 +91,57 @@ public class ArrayConverter implements IString2ValueConverter {
     }
 
 
-    private Object[] convertPrimitiveArrays(final Object arr) {
-        if (arr instanceof Object[]) {
+    private Object[] convertPrimitiveArrays(final Object arr)
+    {
+        if (arr instanceof Object[])
+        {
             return (Object[]) arr;
         }
         Object[] ret;
-        if (arr instanceof int[]) {
+        if (arr instanceof int[])
+        {
             int[] pArr = (int[]) arr;
             ret = new Integer[pArr.length];
-            for (int i = 0; i < pArr.length; i++) {
+            for (int i = 0; i < pArr.length; i++)
+            {
                 ret[i] = pArr[i];
             }
-        } else if (arr instanceof long[]) {
+        } else if (arr instanceof long[])
+        {
             long[] pArr = (long[]) arr;
             ret = new Long[pArr.length];
-            for (int i = 0; i < pArr.length; i++) {
+            for (int i = 0; i < pArr.length; i++)
+            {
                 ret[i] = pArr[i];
             }
-        } else if (arr instanceof float[]) {
+        } else if (arr instanceof float[])
+        {
             float[] pArr = (float[]) arr;
             ret = new Float[pArr.length];
-            for (int i = 0; i < pArr.length; i++) {
+            for (int i = 0; i < pArr.length; i++)
+            {
                 ret[i] = pArr[i];
             }
-        } else if (arr instanceof double[]) {
+        } else if (arr instanceof double[])
+        {
             double[] pArr = (double[]) arr;
             ret = new Double[pArr.length];
-            for (int i = 0; i < pArr.length; i++) {
+            for (int i = 0; i < pArr.length; i++)
+            {
                 ret[i] = pArr[i];
             }
-        } else if (arr instanceof char[]) {
+        } else if (arr instanceof char[])
+        {
             char[] pArr = (char[]) arr;
             ret = new Character[pArr.length];
-            for (int i = 0; i < pArr.length; i++) {
+            for (int i = 0; i < pArr.length; i++)
+            {
                 ret[i] = pArr[i];
             }
-        } else {
+        } else
+        {
             throw new IllegalArgumentException("Unknown array implementation: "
-                    + arr);
+                + arr);
         }
         return ret;
     }

@@ -5,10 +5,12 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.within;
 
-public class String2ValueConverterTest {
 
+public class String2ValueConverterTest
+{
     @Test
-    public void parseString() throws Exception {
+    public void parseString()
+    {
         Double doubleValue = (Double) String2ValueConverter.getDefault().parseString(Double.TYPE, "42.1337");
         assertThat(doubleValue).isCloseTo(42.1337, within(0.0001));
         Boolean booleanValue = (Boolean) String2ValueConverter.getDefault().parseString(Boolean.TYPE, "false");

@@ -14,7 +14,8 @@ import java.util.List;
 /**
  * Interface for string to value converters.
  */
-public interface IString2ValueConverter {
+public interface IString2ValueConverter
+{
     /**
      * @param clazz the implementing class
      * @return true, if the class can be handled by this converter
@@ -41,9 +42,10 @@ public interface IString2ValueConverter {
      * @return an instance of type impl with the given value
      */
     default Object parseString(
-            final Class<?> impl,
-            final List<Class<?>> genericsImpls,
-            final String value) {
+        final Class<?> impl,
+        final List<Class<?>> genericsImpls,
+        final String value)
+    {
         return null;
     }
 
