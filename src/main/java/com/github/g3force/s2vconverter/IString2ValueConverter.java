@@ -32,6 +32,19 @@ public interface IString2ValueConverter
      */
     Object parseString(final Class<?> impl, final String value);
 
+    /**
+     * Parse given String-value according to implementation of this parameter (type-safe)
+     *
+     * @param impl  the implementing class
+     * @param value the value encoded as String
+     * @param <T>   the implementation type
+     * @return an instance of type impl with the given value
+     */
+    default <T> T parse(final Class<T> impl, final String value)
+    {
+        //noinspection unchecked
+        return (T) parseString(impl, value);
+    }
 
     /**
      * Parse given String-value according to implementation of this parameter
@@ -49,6 +62,23 @@ public interface IString2ValueConverter
         return null;
     }
 
+    /**
+     * Parse given String-value according to implementation of this parameter
+     *
+     * @param impl          the implementing class
+     * @param value         the value encoded as String
+     * @param genericsImpls possible generics implementations (e.g. for Lists)
+     * @param <T>           the implementation type
+     * @return an instance of type impl with the given value
+     */
+    default <T> T parse(
+        final Class<T> impl,
+        final List<Class<?>> genericsImpls,
+        final String value)
+    {
+        //noinspection unchecked
+        return (T) parseString(impl, genericsImpls, value);
+    }
 
     /**
      * Convert an object instance to a persistable and parsable String value
