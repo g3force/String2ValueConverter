@@ -18,7 +18,7 @@ dependencies {
 }
 
 group = 'com.github.g3force'
-version = '2.2'
+version = '2.2.1'
 description = 'String2ValueConverter'
 sourceCompatibility = '1.8'
 
